@@ -36,5 +36,5 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
 
 handler.help = ['pinterest2']
 handler.tags = ['downloader']
-handler.command = /^صور$/i
+handler.command = /^صور/i
 export default handler

@@ -31,7 +31,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
 handler.help = ['bot'];
 handler.tags = ['fun'];
-handler.command = ['راف'];
+handler.command = ['rav'];
 handler.owner = true;
 
 

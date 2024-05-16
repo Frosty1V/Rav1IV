@@ -36,6 +36,9 @@ if (/^راف/i.test(m.text) ) {
             
        conn.reply(m.chat,`اكتب .قائمه`, m)
    }
+            if(/menu/i.test(m.text)){
+             conn.reply(m.chat,'اكتب .قائمه', m)
+            }
 
 
   return !0 } 

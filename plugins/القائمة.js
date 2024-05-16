@@ -98,7 +98,7 @@ let str = `
 }
 handler.help = ['main']
 handler.tags = ['group']
-handler.command = ['القائمه','قائمه'] 
+handler.command = ['القائمه','قائمه','قائمة','القائمة'] 
 
 export default handler
 function clockString(ms) {

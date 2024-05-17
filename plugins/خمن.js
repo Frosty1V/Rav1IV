@@ -25,7 +25,7 @@ const handler = async (m, {conn, usedPrefix}) => {
   const clue = _clue.replace(/[A-Za-z]/g, '_');
   const caption = `
 ⷮ *${json.question}*
-${tradutor.texto2[0]} ${(timeout / 1000).toFixed(2)} segundos
+${tradutor.texto2[0]} ${(timeout / 1000).toFixed(2)}
 `.trim();
   conn.tekateki[id] = [
     await conn.reply(m.chat, caption, m), json,
@@ -37,5 +37,5 @@ ${tradutor.texto2[0]} ${(timeout / 1000).toFixed(2)} segundos
 };
 handler.help = ['acertijo'];
 handler.tags = ['game'];
-handler.command = /^(لعبة)$/i;
+handler.command = /^(خمن)$/i;
 export default handler;

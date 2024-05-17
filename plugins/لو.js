@@ -3,7 +3,7 @@ conn.reply(m.chat,`*『${pickRandom(global.lw)}』*`, m)
 }
 handler.help = ['bzmzjdks']
 handler.tags = ['fun']
-handler.command = /لو/i
+handler.command = /^لو$/i
 export default handler
 
 function pickRandom(list) {

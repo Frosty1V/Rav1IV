@@ -1,40 +1,21 @@
-//By Shirokami Ryzen
-//Dont delete this credit!!!
-import fetch from 'node-fetch'
-import { pinterest } from '../lib/scrape.js'
+import {pinterest} from '@bochilteam/scraper';
 
-let handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw `*مثال:*\n*${usedPrefix + command} لوفي*`
 
-  try {
-    const hasil = await pinterest(text);
-    let gambarUrls = hasil.slice(0, 20); // Ambil 20 gambar pertama
+const handler = async (m, {conn, text, usedPrefix, command}) => {
+  const datas = global
+  const idioma = datas.db.data.users[m.sender].language
+  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
+  const tradutor = _translate.plugins.downloader_pinterest
 
-    // Mengacak array gambarUrls
-    for (let i = gambarUrls.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [gambarUrls[i], gambarUrls[j]] = [gambarUrls[j], gambarUrls[i]];
-    }
 
-    // Mengirim 10 gambar secara acak
-    for (let i = 0; i < 5; i++) {
-      let imageUrl = gambarUrls[i];
-      let imageRes = await fetch(imageUrl);
-      let imageBuffer = await imageRes.buffer();
-
-      // Menggunakan fungsi sendImage untuk mengirim gambar ke WhatsApp
-      await conn.sendFile(m.chat, imageBuffer, 'Menu2.jpg', '');
-
-      // Tambahkan jeda agar tidak mengirim gambar terlalu cepat
-      await new Promise(resolve => setTimeout(resolve, 500));
-    }
-  } catch (e) {
-    console.log(e)
-    conn.reply(m.chat, '*حدث خطأ أثناء تنزيل الصورة*.', m)
-  }
-}
-
-handler.help = ['pinterest2']
-handler.tags = ['downloader']
-handler.command = /^صور/i
-export default handler
+  if (!text) throw `${tradutor.texto1} ${usedPrefix + command} القمر*`;
+  const json = await pinterest(text);
+  conn.sendFile(m.chat, json.getRandom(), 'error.jpg', `
+${tradutor.texto2}
+${text}
+`.trim(), m);
+};
+handler.help = ['pinterest <keyword>'];
+handler.tags = ['internet'];
+handler.command = /^(صور)$/i;
+export default handler;

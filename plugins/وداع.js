@@ -10,6 +10,5 @@ handler.help = ['setbye <text>']
 handler.tags = ['group']
 handler.command = ['الوداع'] 
 handler.admin = true
-handler.owner = false
 
 export default handler

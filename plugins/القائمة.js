@@ -1,36 +1,30 @@
-const { MessageType } = require('@adiwajshing/baileys')
+
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-    let pp = './Menu.png'
+
 
     const sections = [
         {
             title: 'قوائم البوت',
             rows: [
                 {
-                    title: 'قسم المشرفين',
-                    rowId: `${usedPrefix}مشرفين`
-                },
-                {
-                    title: 'قسم الترفيه',
-                    rowId: `${usedPrefix}الترفيه`          
+                    title: 'قسم الانمي',
+                    rowId: `${usedPrefix}anime`
                 },
                 {
                     title: 'قسم الاوامر',
-                    rowId: `${usedPrefix}الاوامر`
+                    rowId: `${usedPrefix}commands`
                 }
             ]
         }
     ]
 
     const listMessage = {
-        text: '*▫️  اسم البوت , 𝑅𝒶𝓋𝓑𝓸𝓽*\n*▫️ حط قبل كل امر* *(.)*\n*▫️ اســم الـمطور  𝓕𝓻𝓸𝓼𝓽*'
+        text: '🛡️ افتح القائمة بواسطة الزر\n⚡ لا تلعب كثير في القائمة',
         footer: '𝑅𝒶𝓋𝓑𝓸𝓽',
-        title: 'الـاوامــر',
-        buttonText: '...',
+        title: 'قـائـمـة الـاوامــر',
+        buttonText: 'دوس هنا',
         sections
     }
-
-    let imageBuffer = fs.readFileSync(pp)
 
     await conn.sendMessage(m.chat, { image: imageBuffer, caption: listMessage.title }, { quoted: m })
     await conn.sendMessage(m.chat, listMessage, { quoted: m })
@@ -38,6 +32,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 handler.help = ['info']
 handler.tags = ['main']
-handler.command = ['القائمه', 'قائمه', 'قائمة', 'القائمة']
+handler.command = ['قايمه']
 
 export default handler

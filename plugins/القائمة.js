@@ -1,5 +1,4 @@
-import fs from 'fs'
-
+const { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     let pp = './Menu.png'
 

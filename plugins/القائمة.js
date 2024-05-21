@@ -1,7 +1,9 @@
-let handler = async (m, { conn, args, usedPrefix, command }) => {
+import fs from 'fs'
 
+let handler = async (m, { conn, args, usedPrefix, command }) => {
     let pp = './Menu.png'
-    conn.relayMessage(m.chat, {
+
+    conn.relayWAMessage(m.chat, {
       viewOnceMessage: {
         message: {
           interactiveMessage: {
@@ -45,8 +47,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
           }
         }
       }
-    }, {})
- let imageBuffer = fs.readFileSync(pp)
+    })
+
+    let imageBuffer = fs.readFileSync(pp)
+    conn.sendFile(m.chat, imageBuffer, 'Menu.png', '', m)
 }
 
 handler.help = ['info']

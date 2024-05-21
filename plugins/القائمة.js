@@ -1,61 +1,40 @@
-const { MessageType } = require('@adiwajshing/baileys')
+import fs from 'fs'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     let pp = './Menu.png'
 
     const sections = [
         {
-            title: 'قسم المشرفين',
+            title: 'قوائم البوت',
             rows: [
                 {
-                    title: 'ترقية',
-                    rowId: `${usedPrefix}ترقية`
+                    title: 'قسم المشرفين',
+                    rowId: `${usedPrefix}مشرفين`
                 },
                 {
-                    title: 'اعفاء',
-                    rowId: `${usedPrefix}اعفاء`
+                    title: 'قسم الترفيه',
+                    rowId: `${usedPrefix}الترفيه`          
                 },
                 {
-                    title: 'منشن',
-                    rowId: `${usedPrefix}منشن`
-                },
-                {
-                    title: 'حذف',
-                    rowId: `${usedPrefix}حذف`
-                },
-                {
-                    title: 'طرد',
-                    rowId: `${usedPrefix}طرد`
-                },
-                {
-                    title: 'مخفي',
-                    rowId: `${usedPrefix}مخفي`
+                    title: 'قسم الاوامر',
+                    rowId: `${usedPrefix}الاوامر`
                 }
             ]
         }
     ]
 
-    const buttons = sections.flatMap(section => section.rows.map(row => {
-        return {
-            buttonId: row.rowId,
-            buttonText: {
-                displayText: row.title
-            },
-            type: 1
-        }
-    }))
-
-    const buttonMessage = {
-        contentText: '*▫️  اسم البوت , 𝑅𝒶𝓋𝓑𝓸𝓽*\n*▫️ حط قبل كل امر* *(.)*\n*▫️ اســم الـمطور  𝓕𝓻𝓸𝓼𝓽*',
-        footerText: '𝑅𝒶𝓋𝓑𝓸𝓣',
-        buttons: buttons,
-        headerType: 1
+    const listMessage = {
+        text: '*▫️  اسم البوت , 𝑅𝒶𝓋𝓑𝓸𝓽*\n*▫️ حط قبل كل امر* *(.)*\n*▫️ اســم الـمطور  𝓕𝓻𝓸𝓼𝓽*'
+        footer: '𝑅𝒶𝓋𝓑𝓸𝓽',
+        title: 'الـاوامــر',
+        buttonText: '...',
+        sections
     }
 
     let imageBuffer = fs.readFileSync(pp)
 
-    await conn.sendMessage(m.chat, { image: imageBuffer, caption: buttonMessage.contentText }, MessageType.image, { quoted: m }) // إرسال الصورة والنص بعدها
-    await conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage, { quoted: m }) // إرسال الرسالة التفاعلية
+    await conn.sendMessage(m.chat, { image: imageBuffer, caption: listMessage.title }, { quoted: m })
+    await conn.sendMessage(m.chat, listMessage, { quoted: m })
 }
 
 handler.help = ['info']

@@ -52,9 +52,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let imageBuffer = fs.readFileSync(pp)
     conn.sendFile(m.chat, imageBuffer, 'Menu.png', '', m)
 }
-
 handler.help = ['info']
 handler.tags = ['main']
-handler.command = ['قايمه']
+handler.command = ['القائمه', 'قائمه', 'قائمة', 'القائمة']
 
 export default handler

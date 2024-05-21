@@ -13,9 +13,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 },
                 {
                     title: 'قسم الترفيه',
-                    rowId: `${usedPrefix}الترفيه`,
-                    rowId: `${usedPrefix}الترفيه`
-                    
+                    rowId: `${usedPrefix}الترفيه`          
                 },
                 {
                     title: 'قسم الاوامر',

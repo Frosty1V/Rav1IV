@@ -7,11 +7,11 @@ const handler = async (m, {conn, text, isROwner, isOwner}) => {
   if (text) {
     global.db.data.chats[m.chat].sBye = text;
     m.reply(tradutor.texto1);
-  } else throw `${tradutor.texto2}\n*احسن مكوناش طايقينك !*\n*أكــتب @user تم خروج!*${tradutor.texto3}`
+  } else throw `*أكــتب @user*}`
 };
 handler.help = ['setbye <text>'];
 handler.tags = ['group'];
-handler.command = ['الوداع'] 
+handler.command = ['وداع'] 
 handler.admin = true
 
 export default handler

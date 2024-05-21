@@ -45,8 +45,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     let imageBuffer = fs.readFileSync(pp)
 
-    await conn.sendMessage(m.chat, { image: imageBuffer, caption: listMessage.title }, { quoted: m })
-    await conn.sendMessage(m.chat, listMessage, { quoted: m })
+    await conn.sendMessage(m.chat, listMessage, { quoted: m }) // إرسال الرسالة التفاعلية أولاً
+    await conn.sendMessage(m.chat, { image: imageBuffer, caption: listMessage.title }, { quoted: m }) // إرسال الصورة والنص بعدها
 }
 
 handler.help = ['info']

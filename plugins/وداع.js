@@ -7,7 +7,7 @@ const handler = async (m, {conn, text, isROwner, isOwner}) => {
   if (text) {
     global.db.data.chats[m.chat].sBye = text;
     m.reply(tradutor.texto1);
-  } else throw `*أكــتب @user*}`
+  } else throw `*أدخــل رســالــة الوداع !*\n*عــشان تــعـمل مـنــشن أكــتب @user, عــشان تـحط أســم الـجروب أكـتب @group, عــشان تـحط وصــف أكــتب @desc*`;
 };
 handler.help = ['setbye <text>'];
 handler.tags = ['group'];
